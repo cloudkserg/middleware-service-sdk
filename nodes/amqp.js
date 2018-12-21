@@ -120,7 +120,7 @@ module.exports = function (RED) {
     const ctx =  node.context().global;
     RED.nodes.createNode(node, n);
     node.source = n.source;
-    node.topic = n.topic;
+    node.topic = _.template(n.topic)({config: ctx.settings});
     node.ioType = n.iotype;
     node.noack = n.noack;
     node.durable = n.durable;
